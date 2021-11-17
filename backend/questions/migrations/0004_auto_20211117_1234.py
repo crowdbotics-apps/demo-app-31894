@@ -7,17 +7,23 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('questions', '0003_options_questionoptions'),
+        ("questions", "0003_options_questionoptions"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='answers',
-            name='question_id',
+            model_name="answers",
+            name="question_id",
         ),
         migrations.AddField(
-            model_name='answers',
-            name='question_option_id',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='answers_question_option_id', to='questions.QuestionOptions'),
+            model_name="answers",
+            name="question_option_id",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="answers_question_option_id",
+                to="questions.QuestionOptions",
+            ),
         ),
     ]
