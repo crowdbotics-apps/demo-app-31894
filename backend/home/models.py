@@ -22,8 +22,8 @@ class UserProfile(models.Model):
     "Generated Model"
     userid = models.ForeignKey(
         "users.User",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="userprofile_userid",
     )

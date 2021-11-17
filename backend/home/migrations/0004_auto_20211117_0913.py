@@ -9,17 +9,23 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('home', '0003_userprofile'),
+        ("home", "0003_userprofile"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='userprofile',
-            name='temp',
+            model_name="userprofile",
+            name="temp",
         ),
         migrations.AddField(
-            model_name='userprofile',
-            name='userid',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='userprofile_userid', to=settings.AUTH_USER_MODEL),
+            model_name="userprofile",
+            name="userid",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="userprofile_userid",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]
