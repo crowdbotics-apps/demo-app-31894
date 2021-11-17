@@ -16,3 +16,8 @@ class Customer(models.Model):
     password = models.CharField(
         max_length=256,
     )
+
+
+class UserProfile(models.Model):
+    "Generated Model"
+    temp = models.BigIntegerField()
