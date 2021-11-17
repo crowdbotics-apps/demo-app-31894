@@ -20,4 +20,10 @@ class Customer(models.Model):
 
 class UserProfile(models.Model):
     "Generated Model"
-    temp = models.BigIntegerField()
+    userid = models.ForeignKey(
+        "users.User",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="userprofile_userid",
+    )
