@@ -30,13 +30,15 @@ class Answers(models.Model):
         on_delete=models.CASCADE,
         related_name="answers_user_id",
     )
-    question_id = models.ForeignKey(
-        "questions.Question",
-        on_delete=models.CASCADE,
-        related_name="answers_question_id",
-    )
     answer = models.CharField(
         max_length=256,
+    )
+    question_option_id = models.ForeignKey(
+        "questions.QuestionOptions",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="answers_question_option_id",
     )
 
 

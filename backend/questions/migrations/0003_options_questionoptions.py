@@ -7,23 +7,53 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('questions', '0002_answers'),
+        ("questions", "0002_answers"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Options',
+            name="Options",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('option_name', models.CharField(max_length=256)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("option_name", models.CharField(max_length=256)),
             ],
         ),
         migrations.CreateModel(
-            name='QuestionOptions',
+            name="QuestionOptions",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('option_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='questionoptions_option_id', to='questions.Options')),
-                ('question_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='questionoptions_question_id', to='questions.Question')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "option_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="questionoptions_option_id",
+                        to="questions.Options",
+                    ),
+                ),
+                (
+                    "question_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="questionoptions_question_id",
+                        to="questions.Question",
+                    ),
+                ),
             ],
         ),
     ]

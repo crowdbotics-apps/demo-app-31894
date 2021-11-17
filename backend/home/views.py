@@ -1,4 +1,4 @@
-from .models import Customer
+from .models import UserProfile, Customer
 from django.views.generic import CreateView, UpdateView, DetailView, ListView
 from django.shortcuts import render
 
