@@ -16,9 +16,9 @@ class Question(models.Model):
     )
     input_types_id = models.ForeignKey(
         "questions.InputTypes",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="question_input_types_id",
     )
 
