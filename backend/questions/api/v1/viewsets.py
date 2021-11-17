@@ -1,6 +1,6 @@
 from rest_framework import authentication
-from questions.models import InputTypes, Question
-from .serializers import InputTypesSerializer, QuestionSerializer
+from questions.models import Answers, InputTypes, Question
+from .serializers import AnswersSerializer, InputTypesSerializer, QuestionSerializer
 from rest_framework import viewsets
 
 
@@ -20,3 +20,12 @@ class QuestionViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = Question.objects.all()
+
+
+class AnswersViewSet(viewsets.ModelViewSet):
+    serializer_class = AnswersSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Answers.objects.all()

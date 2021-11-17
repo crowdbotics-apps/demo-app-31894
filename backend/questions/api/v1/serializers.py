@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from questions.models import InputTypes, Question
+from questions.models import Answers, InputTypes, Question
 
 
 class InputTypesSerializer(serializers.ModelSerializer):
@@ -11,4 +11,10 @@ class InputTypesSerializer(serializers.ModelSerializer):
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
+        fields = "__all__"
+
+
+class AnswersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Answers
         fields = "__all__"

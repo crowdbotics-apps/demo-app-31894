@@ -23,4 +23,21 @@ class Question(models.Model):
     )
 
 
+class Answers(models.Model):
+    "Generated Model"
+    user_id = models.ForeignKey(
+        "users.User",
+        on_delete=models.CASCADE,
+        related_name="answers_user_id",
+    )
+    question_id = models.ForeignKey(
+        "questions.Question",
+        on_delete=models.CASCADE,
+        related_name="answers_question_id",
+    )
+    answer = models.CharField(
+        max_length=256,
+    )
+
+
 # Create your models here.
