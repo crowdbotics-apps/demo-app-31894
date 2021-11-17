@@ -40,4 +40,25 @@ class Answers(models.Model):
     )
 
 
+class Options(models.Model):
+    "Generated Model"
+    option_name = models.CharField(
+        max_length=256,
+    )
+
+
+class QuestionOptions(models.Model):
+    "Generated Model"
+    question_id = models.ForeignKey(
+        "questions.Question",
+        on_delete=models.CASCADE,
+        related_name="questionoptions_question_id",
+    )
+    option_id = models.ForeignKey(
+        "questions.Options",
+        on_delete=models.CASCADE,
+        related_name="questionoptions_option_id",
+    )
+
+
 # Create your models here.

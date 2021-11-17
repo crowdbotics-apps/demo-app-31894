@@ -9,17 +9,39 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('questions', '0001_initial'),
+        ("questions", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Answers',
+            name="Answers",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('answer', models.CharField(max_length=256)),
-                ('question_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='answers_question_id', to='questions.Question')),
-                ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='answers_user_id', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("answer", models.CharField(max_length=256)),
+                (
+                    "question_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="answers_question_id",
+                        to="questions.Question",
+                    ),
+                ),
+                (
+                    "user_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="answers_user_id",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
