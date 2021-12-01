@@ -27,3 +27,8 @@ class UserProfile(models.Model):
         on_delete=models.CASCADE,
         related_name="userprofile_userid",
     )
+    profile_picture = models.CharField(
+        null=True,
+        blank=True,
+        max_length=700,
+    )
