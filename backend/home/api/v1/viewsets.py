@@ -42,7 +42,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
     )
     queryset = Customer.objects.all()
 
-
+import base64
 class UserProfileViewSet(viewsets.ModelViewSet):
     serializer_class = UserProfileSerializer
     authentication_classes = (
@@ -50,3 +50,22 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = UserProfile.objects.all()
+    def create(self, request):
+        serializer = self.serializer_class(
+            data=request.data, context={"request": request}
+        )
+        serializer.is_valid(raise_exception=True)
+        
+        profile_image = serializer.data['profile_picture']
+        img_save_path = "user_profile/"
+        if not os.path.exists(img_save_path):
+            os.makedirs(img_save_path)
+
+        format, imgstr = profile_image.split(';base64,')
+        ext = format.split('/')[-1]
+
+        img_save_path += str(user_id) + '.' + ext
+        img_file = open(img_save_path, "wb")
+        img_file.write(base64.b64decode(imgstr))
+        img_file.close()
+        context['profile_picture'] = img_save_path
